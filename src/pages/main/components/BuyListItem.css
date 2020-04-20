@@ -1,0 +1,10 @@
+.collection-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buy-list-item {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
