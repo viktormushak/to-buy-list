@@ -1,0 +1,4 @@
+.remove-item-button {
+    cursor: pointer;
+    user-select: none;
+}

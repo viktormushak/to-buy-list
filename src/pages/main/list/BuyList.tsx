@@ -11,7 +11,7 @@ class BuyList extends Component<BuyListPropsInterface> {
                     ? <h4 className={"center-align"}>Nothing to show</h4>
                     : <ul className={"collection"}>
                         {this.props.buyItems.map(buyItem => {
-                            return <BuyListItem buyItem={buyItem} key={buyItem.id}/>
+                            return <BuyListItem buyItem={buyItem} onRemove={this.props.onRemove} key={buyItem.id}/>
                         })}
                     </ul>
                 }
@@ -22,6 +22,7 @@ class BuyList extends Component<BuyListPropsInterface> {
 
 interface BuyListPropsInterface {
     buyItems: Array<BuyItem>
+    onRemove: (id: number) => void
 }
 
 export default BuyList;
