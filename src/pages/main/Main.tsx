@@ -4,10 +4,10 @@ import AddItemForm from "./form/AddItemForm";
 
 const Main: React.FC = () => {
 
-    const [buyItems, setBuyItems] = useState<BuyItem[]>([])
+    const [buyItems, setBuyItems] = useState<Array<BuyItem>>(new Array<BuyItem>())
 
     useEffect(() => {
-        setBuyItems(JSON.parse(localStorage.getItem("buyItems") || '[]') as BuyItem[])
+        setBuyItems(JSON.parse(localStorage.getItem("buyItems") || '[]') as Array<BuyItem>)
     }, [])
 
     useEffect(() => {
@@ -17,6 +17,14 @@ const Main: React.FC = () => {
     const addItem = (item: BuyItem) => {
         setBuyItems(prevState => {
             return [item, ...prevState]
+        })
+    }
+
+    const selectItem = (id: number) => {
+        setBuyItems(prevState => {
+            const item = prevState.find(item => item.id === id)!
+            item.isBought = true
+            return [...prevState.filter(item => item.id !== id), item]
         })
     }
 
@@ -30,7 +38,7 @@ const Main: React.FC = () => {
         <main>
             <div className={"container"}>
                 <AddItemForm onAddItem={addItem}/>
-                <BuyList buyItems={buyItems} onRemove={removeItem}/>
+                <BuyList buyItems={buyItems} onRemove={removeItem} onSelect={selectItem}/>
             </div>
         </main>
     )

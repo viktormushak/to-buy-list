@@ -8,7 +8,9 @@ class BuyListItem extends Component<BuyListItemPropsInterface> {
         return (
             <li className="collection-item">
                 <label>
-                    <input type="checkbox"/>
+                    <input type="checkbox"
+                           checked={this.props.buyItem.isBought}
+                           onChange={() => this.props.onSelect(this.props.buyItem.id)}/>
                     <span className={"black-text"}>{this.props.buyItem.name}</span>
                 </label>
                 <i className={"remove-item-button secondary-content material-icons red-text"}
@@ -21,6 +23,7 @@ class BuyListItem extends Component<BuyListItemPropsInterface> {
 interface BuyListItemPropsInterface {
     buyItem: BuyItem
     onRemove: (id: number) => void
+    onSelect: (id: number) => void
 }
 
 export default BuyListItem;
