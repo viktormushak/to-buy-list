@@ -1,19 +1,18 @@
-import React, {ChangeEvent, Component} from 'react';
+import React, {Component} from 'react';
 import {BuyItem} from "../Main";
 
 class AddItemForm extends Component<AddItemFormPropsInterface> {
 
-    constructor(props: AddItemFormPropsInterface) {
-        super(props);
-    }
-
-    addItem = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter')
-        this.props.onAddItem({
-            id: Date.now(),
-            name: "event.target",
-            isBought: false
-        })
+    addItem = (event: React.KeyboardEvent) => {
+        const target: HTMLInputElement = event.target as HTMLInputElement
+        if (event.key === 'Enter' && target.value.trim().length > 0){
+            this.props.onAddItem({
+                id: Date.now(),
+                name: target.value,
+                isBought: false
+            })
+            target.value = ''
+        }
     }
 
     render() {

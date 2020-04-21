@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import './BuyListItem.css'
+import {BuyItem} from "../Main";
 
 class BuyListItem extends Component<BuyListItemPropsInterface> {
 
     render() {
         return (
             <li className="collection-item">
-                <label className={"buy-list-item"}>
-                    <input type={"checkbox"}/>
-                    <span>Alvin</span>
+                <label>
+                    <input type="checkbox" />
+                    <span className={"black-text"}>{this.props.buyItem.name}</span>
                 </label>
                 <i className={"secondary-content material-icons red-text"}>delete</i>
             </li>
@@ -17,7 +17,7 @@ class BuyListItem extends Component<BuyListItemPropsInterface> {
 }
 
 interface BuyListItemPropsInterface {
-    buyItem: any
+    buyItem: BuyItem
 }
 
 export default BuyListItem;

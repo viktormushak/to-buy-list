@@ -11,7 +11,7 @@ class BuyList extends Component<BuyListPropsInterface> {
                     ? <h4 className={"center-align"}>Nothing to show</h4>
                     : <ul className={"collection"}>
                         {this.props.buyItems.map(buyItem => {
-                            return <BuyListItem buyItem={buyItem}/>
+                            return <BuyListItem buyItem={buyItem} key={buyItem.id}/>
                         })}
                     </ul>
                 }
